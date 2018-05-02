@@ -59,26 +59,5 @@
 
 <style scoped lang="less">
 @import "../assets/less/index.less";
-.swipe{
-    height: 7.5rem;
-    overflow: hidden;
-    img {
-        width:100%;
-    }
-}
 
-.category{
-    margin: 0 .3rem .3rem .3rem;
-    background-color: #fff;
-    border-radius: .3rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    
-    div{
-        padding:.3rem;
-        font-size:14px;
-        text-align: center;
-    }
-}
 </style>
