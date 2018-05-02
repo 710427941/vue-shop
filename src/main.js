@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import vant from 'vant'
-import 'vant/lib/vant-css/index.css'
+import {Swipe, SwipeItem,Lazyload} from 'vant'
 
-Vue.use(vant)
+
+Vue.use(Swipe).use(SwipeItem).use(Lazyload)
 
 Vue.config.productionTip = false
 
