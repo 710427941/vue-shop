@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <div class="index-header">
             <h3 class="lbs"><i>&#xe643;</i>上海</h3>
             <h2>在线商城</h2>
@@ -20,9 +21,11 @@
                 <span>{{cate.mallCategoryName}}</span>
             </div>
         </div>
+
         <div class="index-ad">
             <div v-for="(img,index) in indexAd" :key="index"><img v-lazy="img.PICTURE_ADDRESS" width="100%"/></div>
         </div>
+
         <div class="hot-goods">
             <h2>热卖商品</h2>
             <swiper :options="hotSwiper">
@@ -38,6 +41,8 @@
             </swiper>
         </div>
 
+        <floor-component :floorData="floor1"></floor-component>
+
     </div>
 
 </template>
@@ -45,7 +50,9 @@
 <script>
     import axios from 'axios'
     import {swiper, swiperSlide} from 'vue-awesome-swiper'
+    import scrollComponent from '@/components/scrollComponent.vue'
     import 'swiper/dist/css/swiper.css'
+    import floorComponent from '@/components/floorComponent.vue';
     export default {
         data() {
             return {
@@ -63,10 +70,11 @@
                 images: [],
                 category:[],
                 indexAd:[],
-                indexHot:[]
+                indexHot:[],
+                floor1:[]
             }
         },components: {
-            swiper,swiperSlide
+            swiper,swiperSlide,floorComponent
         },
         created() {
           axios({
@@ -80,6 +88,10 @@
                   this.category = res.data.data.CATEGORY
                   this.indexAd = res.data.data.INDEX_ADBANNER
                   this.indexHot = res.data.data.hotGoods
+                  this.floor1 = res.data.data.floor1
+                  this.floor1_0 = this.floor1[0]
+                  this.floor1_1 = this.floor1[1]
+                  this.floor1_2 = this.floor1[2]
               }
           })
           .catch(error=>{
@@ -93,5 +105,4 @@
 
 <style scoped lang="less">
 @import "../assets/less/index.less";
-
 </style>
