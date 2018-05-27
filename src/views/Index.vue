@@ -32,8 +32,8 @@
                 <swiper-slide class="index-hot-list" v-for="(item,index) in indexHot" :key="index">
                     <div>
                         <img v-lazy="item.image" />
-                        <strong>￥{{item.mallPrice}}</strong>
-                        <del>￥{{item.price}}</del>
+                        <strong>￥{{item.mallPrice | moneyFilter}}</strong>
+                        <del>￥{{item.price | moneyFilter}}</del>
                         <h3>{{item.name}}</h3>
                         <i>热卖</i>
                     </div>
@@ -41,7 +41,22 @@
             </swiper>
         </div>
 
-        <floor-component :floorData="floor1"></floor-component>
+        <floor-component :floorData="floor1" :floorTitle='floorTitle.floor1'></floor-component>
+        <floor-component :floorData="floor2" :floorTitle='floorTitle.floor2'></floor-component>
+        <floor-component :floorData="floor3" :floorTitle='floorTitle.floor3'></floor-component>
+        
+        <div class="hot-area">
+                <div class="hot-title">热卖商品</div>
+                <div class="hot-goods">
+                    <van-list>
+                        <van-row gutter="20">
+                            <van-col span="12" v-for="(item,index) in hotGoods" ::key="index">
+                                <goods-info :goodsImage="item.image" :goodsName="item.name" :goodsPrice="item.price"></goods-info>
+                            </van-col>
+                        </van-row>
+                    </van-list>
+                </div>
+            </div>
 
     </div>
 
@@ -50,9 +65,10 @@
 <script>
     import axios from 'axios'
     import {swiper, swiperSlide} from 'vue-awesome-swiper'
-    import scrollComponent from '@/components/scrollComponent.vue'
+    import { toMoney } from '@/filter/moneyFilter.js'
+    import floorComponent from '@/components/floorComponent'
+    import goodsInfo from '@/components/goodsInfoComponent'
     import 'swiper/dist/css/swiper.css'
-    import floorComponent from '@/components/floorComponent.vue';
     export default {
         data() {
             return {
@@ -71,11 +87,14 @@
                 category:[],
                 indexAd:[],
                 indexHot:[],
-                floor1:[]
+                floor1:[],
+                floor2:[],
+                floor3:[],
+                floorTitle:[],
+                hotGoods:[]
             }
-        },components: {
-            swiper,swiperSlide,floorComponent
         },
+        components: {swiper,swiperSlide,floorComponent,goodsInfo},
         created() {
           axios({
               url:'https://www.easy-mock.com/mock/5ae9d12c0a492d2535b91362/vueshop/shopindex',
@@ -89,16 +108,20 @@
                   this.indexAd = res.data.data.INDEX_ADBANNER
                   this.indexHot = res.data.data.hotGoods
                   this.floor1 = res.data.data.floor1
-                  this.floor1_0 = this.floor1[0]
-                  this.floor1_1 = this.floor1[1]
-                  this.floor1_2 = this.floor1[2]
+                  this.floor2 = res.data.data.floor2
+                  this.floor3 = res.data.data.floor3
+                  this.floorTitle = res.data.data.floorName
+                  this.hotGoods = res.data.data.hotGoods
               }
           })
           .catch(error=>{
               console.log(error);
           })
         },
-        methods: {
+        filters: {
+            moneyFilter(money) {
+                return toMoney(money)
+            }
         }
     }
 </script>

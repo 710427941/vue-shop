@@ -83,8 +83,9 @@
     
     div{
         padding:.3rem;
-        font-size:14px;
+        font-size:12px;
         text-align: center;
+        width: 20%;
     }
 }
 
@@ -95,6 +96,7 @@
 
 .hot-goods{
     background-color: #fff;
+    border-bottom:1px solid #f7f7f7; 
     h2{
         font-size: 16px;
         color: @fontcolor333;
@@ -131,6 +133,9 @@
                 font-size: 14px;
                 height: @rem24;
                 font-weight: 100;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
             i{
                 position: absolute;
@@ -151,3 +156,13 @@
     }
 }
 
+.hot-area{
+    text-align: center;
+    font-size:14px;
+    height: 1.8rem;
+    line-height:1.8rem;
+}
+
+.hot-goods{
+    overflow: hidden;
+}

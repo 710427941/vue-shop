@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {Swipe, SwipeItem,Lazyload} from 'vant'
+import {Lazyload,List,Row,Col,Button} from 'vant'
 
 
-Vue.use(Swipe).use(SwipeItem).use(Lazyload)
+Vue.use(Lazyload).use(List).use(Row).use(Col).use(Button)
 
 Vue.config.productionTip = false
 
