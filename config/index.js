@@ -20,6 +20,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
+<<<<<<< HEAD
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
@@ -28,6 +29,9 @@ module.exports = {
     // in the browser.
     showEslintErrorsInOverlay: false,
 
+=======
+    
+>>>>>>> ec3bf67960aaa9fbd365722ab03032a439ea301d
     /**
      * Source Maps
      */

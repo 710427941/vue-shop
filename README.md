@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # vue-shop
+=======
+# vueshop
+>>>>>>> ec3bf67960aaa9fbd365722ab03032a439ea301d
 
 > A Vue.js project
 
