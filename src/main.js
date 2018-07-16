@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import 'vant/lib/vant-css/index.css';
 import {Lazyload,List,Row,Col,Button} from 'vant'
 Vue.use(Lazyload).use(List).use(Row).use(Col).use(Button)
 
