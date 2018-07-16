@@ -40,7 +40,7 @@
                 </swiper-slide>
             </swiper>
         </div>
-  
+
         <floor-component :floorData="floor1" :floorTitle='floorTitle.floor1'></floor-component>
         <floor-component :floorData="floor2" :floorTitle='floorTitle.floor2'></floor-component>
         <floor-component :floorData="floor3" :floorTitle='floorTitle.floor3'></floor-component>
@@ -50,7 +50,7 @@
                 <div class="hot-goods">
                     <van-list>
                         <van-row gutter="20">
-                            <van-col span="12" v-for="(item,index) in hotGoods" :key="index">
+                            <van-col span="12" v-for="(item,index) in hotGoods" ::key="index">
                                 <goods-info :goodsImage="item.image" :goodsName="item.name" :goodsPrice="item.price"></goods-info>
                             </van-col>
                         </van-row>
