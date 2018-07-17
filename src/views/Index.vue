@@ -50,7 +50,7 @@
                 <div class="hot-goods">
                     <van-list>
                         <van-row gutter="20">
-                            <van-col span="12" v-for="(item,index) in hotGoods" ::key="index">
+                            <van-col span="12" v-for="(item,index) in hotGoods" :key="index">
                                 <goods-info :goodsImage="item.image" :goodsName="item.name" :goodsPrice="item.price"></goods-info>
                             </van-col>
                         </van-row>
@@ -59,7 +59,6 @@
             </div>
 
     </div>
-
 </template>
 
 <script>
@@ -68,6 +67,9 @@
     import { toMoney } from '@/filter/moneyFilter.js'
     import floorComponent from '@/components/floorComponent'
     import goodsInfo from '@/components/goodsInfoComponent'
+    
+    import url from '@/serviceApi.config.js'
+
     import 'swiper/dist/css/swiper.css'
     export default {
         data() {
@@ -97,7 +99,7 @@
         components: {swiper,swiperSlide,floorComponent,goodsInfo},
         created() {
           axios({
-              url:'https://www.easy-mock.com/mock/5ae9d12c0a492d2535b91362/vueshop/shopindex',
+              url:url.getShopIndexInfo,
               type:'get'
           })
           .then(res=>{
