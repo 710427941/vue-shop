@@ -1,7 +1,7 @@
 <template>
     <div>
         <van-nav-bar
-            title="用户注册"
+            title="用户登录"
             left-text="返回"
             left-arrow
             @click-left = "goBack"
@@ -26,7 +26,7 @@
                 :error-message="passwordErrorMsg"
             />
             <div class="register-bunnton">
-                <van-button type="primary" @click="regiserAction" size="large" :loading="openLoading">马上注册</van-button>
+                <van-button type="primary" @click="loginAction" size="large" :loading="openLoading">登录</van-button>
             </div>
         </div>
 
@@ -51,10 +51,10 @@
             goBack() {
                 this.$router.go(-1)
             },
-            regiserAction(){
-                this.checkFrom() && this.axiosRegisterUser()
+            loginAction(){
+                this.checkFrom() && this.axiosLoginUser()
             },
-            axiosRegisterUser(){
+            axiosLoginUser(){
                  this.openLoading = true
                 axios({
                     url:url.resisterUser,
