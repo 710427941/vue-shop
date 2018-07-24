@@ -3,7 +3,8 @@ const LOCALURL = "http://localhost:3000/"
 
 const URL = {
     getShopIndexInfo: BASEURL + "shopindex", //商城首页所有数据
-    resisterUser: LOCALURL + 'user/register'
+    resisterUser: LOCALURL + 'user/register',
+    loginUser: LOCALURL + 'user/login'
 }
 
 module.exports = URL

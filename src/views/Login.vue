@@ -47,6 +47,12 @@
                 passwordErrorMsg:""
             }
         },
+        created(){
+            if(localStorage.userInfo){
+                Toast.success('您已经登录过了')
+                this.$router.push('/')
+            }
+        },
         methods: {
             goBack() {
                 this.$router.go(-1)
@@ -57,7 +63,7 @@
             axiosLoginUser(){
                  this.openLoading = true
                 axios({
-                    url:url.resisterUser,
+                    url:url.loginUser,
                     method:"post",
                     data:{
                         userName:this.username,
@@ -65,19 +71,25 @@
                     }
                 })
                 .then(response=>{
-                    if(response.data.code==200){
-                        Toast.success(response.data.message)
-                        this.$router.push('/')
-                    }else{
-                        console.log(response.data.message)
-                        Toast.fail('注册失败')
-                        this.openLoading = false
-                    }
+                   if(response.data.code=200 && response.data.message){
+                        new Promise((resolve,reject)=>{
+                            localStorage.userInfo = {userName:this.userName}
+                            setTimeout(()=>{resolve()},500)
+                        }).then(()=>{
+                            Toast.success('登录成功')
+                            this.$router.push('/')
+                        }).catch(error=>{
+                            Toast.fail('登录状态保存失败')
+                            console.log(error)
+                        })
+                   }else{
+                       Toast.fail('登录失败')
+                       this.openLoading = false
+                   }
                 })
                 .catch((error)=>{
+                    Toast.fail('登录失败')
                     this.openLoading = false
-                    console.log(error)
-                    Toast.fail('注册失败')
                 })
             },
             checkFrom(){
