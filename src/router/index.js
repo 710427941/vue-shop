@@ -4,6 +4,7 @@ import Index from '@/views/Index'
 import Register from '@/views/Register'
 import Login from '@/views/Login'
 import GoodsInfo from '@/views/GoodInfo'
+import CategoryList from '@/views/CategoryList'
 
 Vue.use(Router)
 
@@ -12,6 +13,7 @@ export default new Router({
         { path: '/', component: Index, name: '商城首页' },
         { path: '/register', component: Register, name: '用户注册' },
         { path: '/login', component: Login, name: '用户登录' },
-        { path: '/goodsinfo', component: GoodsInfo, name: 'GoodsInfo' }
+        { path: '/goodsinfo', component: GoodsInfo, name: 'GoodsInfo' },
+        { path: '/category', component: CategoryList, name: 'CategoryList' }
     ]
 })
